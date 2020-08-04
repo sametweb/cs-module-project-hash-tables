@@ -123,12 +123,16 @@ class HashTable:
             if current.key == key:
                 self.item_count -= 1
                 self.store[index] = current.next
+                if self.get_load_factor() < 0.2:
+                    self.resize(self.capacity // 2)
                 return
 
             while current.next is not None:
                 if current.next.key == key:
                     self.item_count -= 1
                     current.next = current.next.next
+                    if self.get_load_factor() < 0.2:
+                        self.resize(self.capacity // 2)
                     return
                 current = current.next
 
