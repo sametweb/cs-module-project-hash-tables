@@ -28,7 +28,6 @@ def word_count(s):
     splitted = s.split(' ')
 
     for word in splitted:
-        word = clean_up(word)
         if word != "":
             if store.get(word) is None:
                 store[word] = 1
